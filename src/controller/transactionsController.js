@@ -67,9 +67,14 @@ export async function getSummaryByUserID  (req,res) {
     try {
         const {userId} = req.params;
 
-        if (isNaN(parseInt(userId))) {
+        // if (isNaN(parseInt(userId))) {
+        //     return res.status(400).json({ message: "Invalid userId" });
+        // }
+        
+        if (!userId || typeof userId !== 'string') {
             return res.status(400).json({ message: "Invalid userId" });
         }
+
 
 
         const balancedResult = await sql `
